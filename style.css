@@ -1,0 +1,141 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f0f2f5, #c9d6ff);
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.container {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 700px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.subtitle {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+button {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: none;
+    background: #0072ff;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00c6ff;
+}
+
+.clear-btn {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.clear-btn:hover {
+    background: #ff1a1a;
+}
+
+.result.safe, .result.phishing {
+    font-weight: bold;
+    margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+}
+
+.result.safe {
+    color: green;
+    animation: pulse-green 1.5s infinite;
+}
+
+.result.phishing {
+    color: red;
+    animation: pulse-red 1.5s infinite;
+}
+
+@keyframes pulse-green {
+    0%, 100% { text-shadow: 0 0 5px green; }
+    50% { text-shadow: 0 0 20px green; }
+}
+
+@keyframes pulse-red {
+    0%, 100% { text-shadow: 0 0 5px red; }
+    50% { text-shadow: 0 0 20px red; }
+}
+
+.stats, .history {
+    text-align: left;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+}
+
+.history .safe {
+    background: #d4f4dd; /* light green */
+    color: green;
+}
+
+.history .phishing {
+    background: #f4d4d4; /* light red */
+    color: red;
+}
+
+tr:hover {
+    background-color: #e6f0ff;
+}
