@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - PhishGuard</title>
+    <style>
+        body { font-family: Arial; text-align:center; background: linear-gradient(135deg, #1e3c72, #2a5298); color:white; margin:0; padding:0; }
+        .card { background: rgba(255,255,255,0.1); margin:20px auto; padding:20px; width:350px; border-radius:15px; }
+        input { width:100%; padding:10px; margin-top:10px; border-radius:8px; border:none; }
+        button { width:100%; padding:10px; margin-top:10px; border-radius:8px; border:none; background:#00c6ff; color:white; cursor:pointer; }
+        canvas { margin-top:20px; }
+        a { color:#00c6ff; display:inline-block; margin-top:20px; text-decoration:none; }
+        .result { margin-top:20px; padding:10px; border-radius:10px; }
+        .safe { background:green; }
+        .phish { background:red; }
+    </style>
+</head>
+<body>
+
+<h1>📊 PhishGuard Dashboard</h1>
+
+<div class="card">
+    <h2>Enter URL to Check</h2>
+    <form method="post">
+        <input type="text" name="url" placeholder="Enter URL..." required>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if result %}
+        <div class="result {% if 'Safe' in result %}safe{% else %}phish{% endif %}">
+            <h3>{{ result }}</h3>
+            <p>Risk: {{ risk }}%</p>
+            <p>URL: {{ url }}</p>
+        </div>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h2>Scan Stats</h2>
+    <p>Safe URLs: {{ safe }}</p>
+    <p>Phishing URLs: {{ phish }}</p>
+</div>
+
+<canvas id="chart" width="300" height="300"></canvas>
+
+<a href="/history">View History</a> | 
+<a href="/logout">Logout</a>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const data = {
+    labels: ["Safe", "Phishing"],
+    datasets: [{
+        label: "Scan Results",
+        data: [{{ safe }}, {{ phish }}],
+        backgroundColor: ["green", "red"]
+    }]
+};
+new Chart(document.getElementById("chart"), {
+    type: "pie",
+    data: data
+});
+</script>
+
+</body>
+</html>
